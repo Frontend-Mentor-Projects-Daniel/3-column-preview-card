@@ -70,14 +70,31 @@ select {
 /**--------------------*/
 :root {
   /* COLOURS */
+  /* primary */
+  --clr-bright-orange: 31, 77%, 52%;
+  --clr-dark-cyan: 184, 100%, 22%;
+  --clr-very-dark-cyan: 179, 100%, 13%;
+
+  /* paragraphs */
+  --clr-transparent-white: 0, 0%, 100%, 0.75;
+  /* background, headings, buttons */
+  --clr-very-light-gray: 0, 0%, 95%;
 
   /* FONT FAMILY */
+  --ff-lexend-deca: 'Lexend Deca', sans-serif;
+  --ff-big-shoulders-display: 'Big Shoulders Display', cursive;
 
   /* FONT SIZE */
+  --fs-default: 15px;
 
   /* FONT WEIGHT */
+  --fw-regular: 400;
+  --fw-bold: 700;
 
   /* BREAKPOINTS */
+  --bp-mobile: 23.4375em;
+  --bp-tablet: 48em;
+  --bp-desktop: 90em;
 }
 
 /**--------------------*/
@@ -88,6 +105,7 @@ select {
 /**      GENERAL       */
 /**--------------------*/
 body {
+  background-color: hsl(var(--clr-very-light-gray));
 }
 
 .main {
@@ -100,6 +118,105 @@ body {
   width: 100vw;
 }
 
+/* CARDS */
+.card {
+  border: 1px solid black;
+
+  /* display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr); */
+}
+
+.card__icon {
+}
+
+.card__header {
+  color: hsl(var(--clr-very-light-gray));
+  font-family: var(--ff-big-shoulders-display);
+  font-size: 2.5rem;
+  font-weight: var(--fw-bold);
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+
+.card__text {
+  color: hsl(var(--clr-transparent-white));
+  font-size: var(--fs-default);
+}
+
+/* BUTTON LINKS */
+.btn:link,
+.btn:visited {
+  background-color: hsl(var(--clr-very-light-gray));
+  border-radius: 50px;
+  display: inline-block;
+  padding: 0.5rem 2rem;
+  text-decoration: none;
+}
+
+.btn:hover,
+.btn:active {
+  border: 1px solid hsl(var(--clr-very-light-gray));
+  color: hsl(var(--clr-very-light-gray));
+}
+
 /**--------------------*/
 /**    3-COL-CARD      */
 /**--------------------*/
+/* SUDO CODE 🚨⚠️✅ */
+/* 
+0) CREATE A GAP-LESS GRID USING A DESKTOP FIRST APPROACH THEN STYLE A SINGLE CARD FIRST ✅
+1) MAKE GRID RESPONSIVE WITHOUT MEDIA QUERIES 🚨 -> create card first since calculating dimensions without content is confusing
+2) CARD SHOULD HAVE A WIDTH EQUAL TO 1/3 OF ITS PARENT ELEMENT AND ITS HEIGHT SHOULD BE DETERMINED BY ITS CONTENT 🚨 -> the cards width is determined solely by the grid (unless its an image)
+🚨) -> Style content first
+3) EACH CARD SHOULD HAVE BE LAID OUT USING A 3-COL X 4-ROW GRID WHERE COLS 1 AND 2 CAN BE USED FOR FLEXIBLE PADDING VALUES
+*/
+
+.three-col-card {
+  display: grid;
+  /* grid-template-columns: repeat(auto-fit, minmax(33.333%, 1fr)); */
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* CARD 1 */
+.card-1 {
+  background-color: hsl(var(--clr-bright-orange));
+}
+
+/* button */
+.btn--orange {
+  color: hsl(var(--clr-bright-orange));
+}
+
+.btn--orange:hover,
+.btn--orange:active {
+  background-color: hsl(var(--clr-bright-orange));
+}
+
+/* CARD 2 */
+.card-2 {
+  background-color: hsl(var(--clr-dark-cyan));
+}
+
+.btn--dark-cyan {
+  color: hsl(var(--clr-dark-cyan));
+}
+
+.btn--dark-cyan:hover,
+.btn--dark-cyan:active {
+  background-color: hsl(var(--clr-dark-cyan));
+}
+
+/* CARD 3 */
+.card-3 {
+  background-color: hsl(var(--clr-very-dark-cyan));
+}
+
+.btn--very-dark-cyan {
+  color: hsl(var(--clr-very-dark-cyan));
+}
+
+.btn--very-dark-cyan:hover,
+.btn--very-dark-cyan:active {
+  background-color: hsl(var(--clr-very-dark-cyan));
+}
